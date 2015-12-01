@@ -1,0 +1,28 @@
+mysql:
+  build: ./env/mysql
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./database:/var/lib/mysql
+    - ./log/mysql:/var/log/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+
+tomcat:
+  build: ./env/tomcat
+  ports:
+    - "8080:8080"
+  volumes:
+    - ./log/tomcat:/usr/local/tomcat/logs
+    - ./webapps:/webapps
+  links:
+    - "mysql"
+
+nginx:
+  build: ./env/nginx
+  ports:
+    - "80:80"
+  volumes:
+    - ./log/nginx:/log/nginx
+  links:
+    - "tomcat"

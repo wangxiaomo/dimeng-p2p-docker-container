@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Server port="18007" shutdown="SHUTDOWN">
+	<Listener className="org.apache.catalina.core.JasperListener" />
+	<Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
+    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+	<Service name="Catalina">
+		<Connector port="8080" maxHttpHeaderSize="8192" protocol="org.apache.coyote.http11.Http11NioProtocol" 
+			enableLookups="false" redirectPort="8443" acceptCount="400" connectionTimeout="20000"
+			disableUploadTimeout="true"
+			compressableMimeType="text/html,text/xml,text/plain,text/css,text/javascript,application/json,application/x-javascript,application/xml,application/xml+rss"
+			URIEncoding="UTF-8" />
+		<Engine name="Catalina" defaultHost="localhost">
+			<Host name="localhost" appBase="webapps" unpackWARs="true"
+				autoDeploy="true">
+                <Context path="" docBase="/webapps/front/current/" cookies='false'>
+					<Parameter name="retention" value="PRE_PRODUCTION"/>
+                    <Parameter name="fileStore.home" value="/webapps/fileStore/"/>
+                    <Parameter name="user" value="root"/>
+                    <Parameter name="password" value="PZZGpAxao4VTFAFGUfatXg=="/>
+                    <Parameter name="jdbcUrl" value="jdbc:mysql://mysql:3306/S10?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true"/>
+                    <Parameter name="minPoolSize" value="10"/>
+                    <Parameter name="maxPoolSize" value="50"/>
+                    <Parameter name="maxIdleTime" value="600"/>
+				</Context>
+                <Context path="/user" docBase="/webapps/user/current/" cookies='false'>
+					<Parameter name="retention" value="PRE_PRODUCTION"/>
+                    <Parameter name="fileStore.home" value="/webapps/fileStore/"/>
+                    <Parameter name="user" value="root"/>
+                    <Parameter name="password" value="PZZGpAxao4VTFAFGUfatXg=="/>
+                    <Parameter name="jdbcUrl" value="jdbc:mysql://mysql:3306/S10?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;noAccessToProcedureBodies=true"/>
+                    <Parameter name="minPoolSize" value="10"/>
+                    <Parameter name="maxPoolSize" value="50"/>
+                    <Parameter name="maxIdleTime" value="600"/>
+				</Context>
+                <Context path="/pay" docBase="/webapps/pay/current/" cookies='false'>
+					<Parameter name="retention" value="PRE_PRODUCTION"/>
+                    <Parameter name="fileStore.home" value="/webapps/fileStore/"/>
+                    <Parameter name="user" value="root"/>
+                    <Parameter name="password" value="PZZGpAxao4VTFAFGUfatXg=="/>
+                    <Parameter name="jdbcUrl" value="jdbc:mysql://mysql:3306/S10?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true"/>
+                    <Parameter name="minPoolSize" value="10"/>
+                    <Parameter name="maxPoolSize" value="50"/>
+                    <Parameter name="maxIdleTime" value="600"/>
+				</Context>
+                <Context path="/console" docBase="/webapps/console/current/" cookies='false'>
+					<Parameter name="retention" value="PRE_PRODUCTION"/>
+                    <Parameter name="fileStore.home" value="/webapps/fileStore/"/>
+                    <Parameter name="user" value="root"/>
+                    <Parameter name="password" value="PZZGpAxao4VTFAFGUfatXg=="/>
+                    <Parameter name="jdbcUrl" value="jdbc:mysql://mysql:3306/S70?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true"/>
+                    <Parameter name="minPoolSize" value="10"/>
+                    <Parameter name="maxPoolSize" value="50"/>
+                    <Parameter name="maxIdleTime" value="600"/>
+				</Context>
+			</Host>
+		</Engine>
+	</Service>
+</Server>
